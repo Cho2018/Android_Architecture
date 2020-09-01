@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -12,12 +13,12 @@ import com.example.android_architecture.BaseActivity;
 import com.example.android_architecture.R;
 import com.example.android_architecture.adapter.MainAdapter;
 import com.example.android_architecture.api.model.User;
+import com.example.android_architecture.view.detail.DetailActivity;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 
-//TODO
 public class MainActivity extends BaseActivity
         implements MainContract.View, MainAdapter.OnItemClickListener {
     private MainAdapter adapter = new MainAdapter();
@@ -55,6 +56,9 @@ public class MainActivity extends BaseActivity
 
     @Override
     public void onClick(User user) {
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra(DetailActivity.KEY_USER, user);
+        startActivity(intent);
     }
 
     @Override

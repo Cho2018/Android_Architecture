@@ -5,7 +5,7 @@ import com.example.android_architecture.api.model.User;
 
 import java.util.ArrayList;
 
-public class MainContract {
+public interface MainContract {
     interface View extends BaseContract.View {
         void showProgress();
 

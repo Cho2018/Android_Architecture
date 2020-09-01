@@ -10,7 +10,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class GithubApiProvider {
+public final class GithubApiProvider {
     public static GithubApi provideGithubApi() {
         return new Retrofit.Builder()
                 .baseUrl(Constant.BASE_URL)
