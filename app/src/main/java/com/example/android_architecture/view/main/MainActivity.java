@@ -21,6 +21,7 @@ import butterknife.BindView;
 public class MainActivity extends BaseActivity
         implements MainContract.View, MainAdapter.OnItemClickListener {
     private MainAdapter adapter = new MainAdapter();
+    private MainPresenter presenter = new MainPresenter();
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
@@ -37,6 +38,19 @@ public class MainActivity extends BaseActivity
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         adapter.setClickListener(this);
+
+        presenter.setView(this);
+
+        presenter.loadData();
+
+        presenter.setRxEvent();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        presenter.releaseView();
     }
 
     @Override

@@ -8,11 +8,18 @@ buildscript {
         // retrofit
         retrofitVersion = '2.3.0'
 
+        // okHttp
+        okHttpVersion = '3.8.1'
+
         // glide
         glideVersion = '3.7.0'
 
         // butterKnife
         butterKnifeVersion = '8.8.1'
+
+        // rxAndroid
+        rxAndroidVersion = '2.0.2'
+        rxJavaVersion = '2.1.3'
     }
 
     repositories {

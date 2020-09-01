@@ -42,12 +42,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.PersonHolder> 
         personHolder.tvItemMail.setText(user.email);
         personHolder.tvItemLikeCnt.setText(user.getLikeCnt());
 
-        personHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onClick(user);
-            }
-        });
+        personHolder.itemView.setOnClickListener(view -> listener.onClick(user));
     }
 
     @Override
