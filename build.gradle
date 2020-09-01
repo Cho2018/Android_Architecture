@@ -8,6 +8,9 @@ buildscript {
         // retrofit
         retrofitVersion = '2.3.0'
 
+        // glide
+        glideVersion = '3.7.0'
+
         // butterKnife
         butterKnifeVersion = '8.8.1'
     }

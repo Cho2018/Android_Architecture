@@ -1,6 +1,7 @@
 package com.example.android_architecture.view.main;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.widget.ProgressBar;
 
 import com.example.android_architecture.BaseActivity;
 import com.example.android_architecture.R;
+import com.example.android_architecture.adapter.MainAdapter;
 import com.example.android_architecture.api.model.User;
 
 import java.util.ArrayList;
@@ -17,7 +19,8 @@ import butterknife.BindView;
 
 //TODO
 public class MainActivity extends BaseActivity
-        implements MainContract.View {
+        implements MainContract.View, MainAdapter.OnItemClickListener {
+    private MainAdapter adapter = new MainAdapter();
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
@@ -30,6 +33,14 @@ public class MainActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("RANDOM USER");
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+        adapter.setClickListener(this);
+    }
+
+    @Override
+    public void onClick(User user) {
     }
 
     @Override
@@ -44,11 +55,11 @@ public class MainActivity extends BaseActivity
 
     @Override
     public void setItems(ArrayList<User> items) {
-
+        adapter.setItems(items);
     }
 
     @Override
     public void updateView(User user) {
-
+        adapter.updateView(user);
     }
 }
