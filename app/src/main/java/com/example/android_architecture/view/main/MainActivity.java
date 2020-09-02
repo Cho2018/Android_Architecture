@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 
+//TODO
 public class MainActivity extends BaseActivity
         implements MainContract.View, MainAdapter.OnItemClickListener {
     private MainAdapter adapter = new MainAdapter();

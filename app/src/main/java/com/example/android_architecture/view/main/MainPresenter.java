@@ -14,6 +14,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
+//TODO
 public class MainPresenter implements MainContract.Presenter {
     private MainContract.View view;
     private GithubApi api;
@@ -29,6 +30,7 @@ public class MainPresenter implements MainContract.Presenter {
         this.view = view;
     }
 
+    // 해제시, 사용중인 통신 중단
     @Override
     public void releaseView() {
         disposable.clear();
@@ -36,7 +38,7 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void loadData() {
-        disposable.add(api.getUserList(Constant.RANDOM_USER_URL)
+        disposable.add(api.getUserList(Constant.RANDOM_USER_URL) // REST API 를 통해 정보 요청
                 .subscribeOn(Schedulers.io()) // 어떤 스레드에서 작업을 실행할지 정하는 함수
                 .observeOn(AndroidSchedulers.mainThread()) // 어떤 스레드에서 작업을 실행할지 정하는 함수
                 .doOnSubscribe(__ -> { // 구독할 때 수행할 작업을 구현
