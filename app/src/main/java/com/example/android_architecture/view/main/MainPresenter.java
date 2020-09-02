@@ -9,15 +9,14 @@ import com.example.android_architecture.constant.Constant;
 import com.example.android_architecture.rxEventBus.RxEvent;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class MainPresenter implements MainContract.Presenter {
-    private GithubApi api;
     private MainContract.View view;
+    private GithubApi api;
     private CompositeDisposable disposable;
 
     MainPresenter() {
@@ -38,12 +37,12 @@ public class MainPresenter implements MainContract.Presenter {
     @Override
     public void loadData() {
         disposable.add(api.getUserList(Constant.RANDOM_USER_URL)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe(__ -> {
+                .subscribeOn(Schedulers.io()) // 어떤 스레드에서 작업을 실행할지 정하는 함수
+                .observeOn(AndroidSchedulers.mainThread()) // 어떤 스레드에서 작업을 실행할지 정하는 함수
+                .doOnSubscribe(__ -> { // 구독할 때 수행할 작업을 구현
                     view.showProgress();
                 })
-                .doOnTerminate(() -> {
+                .doOnTerminate(() -> { // 스트림이 종료될 때 수행할 작업을 구현
                     view.hideProgress();
                 })
                 .subscribe(userResponse -> {

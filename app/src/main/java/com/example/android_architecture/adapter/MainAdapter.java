@@ -50,15 +50,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.PersonHolder> 
         return items.size();
     }
 
-    public void updateView(User user) {
-        int pos = getPosition(user);
-
-        if (pos == RecyclerView.NO_POSITION) return;
-
-        items.set(pos, user);
-        notifyItemChanged(pos);
-    }
-
     private int getPosition(User user) {
         for (int i = 0; i < items.size(); i++) {
             if (items.get(i).getFullName().equals(user.getFullName())) {
@@ -72,6 +63,15 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.PersonHolder> 
     public void setItems(ArrayList<User> items) {
         this.items = items;
         notifyDataSetChanged();
+    }
+
+    public void updateView(User user) {
+        int pos = getPosition(user);
+
+        if (pos == RecyclerView.NO_POSITION) return;
+
+        items.set(pos, user);
+        notifyItemChanged(pos);
     }
 
     public void setClickListener(OnItemClickListener listener) {

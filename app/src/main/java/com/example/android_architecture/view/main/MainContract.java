@@ -29,7 +29,7 @@ public interface MainContract {
         // API 통신을 통해 데이터를 받아옴
         void loadData();
 
-        // RxEventBus를 연결하여 Like 값을 동기화
+        // RxEventBus 를 연결하여 Like 값을 동기화함
         void setRxEvent();
     }
 }

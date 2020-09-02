@@ -2,8 +2,6 @@ package com.example.android_architecture;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import butterknife.ButterKnife;
