@@ -9,6 +9,7 @@ import com.example.android_architecture.constant.Constant;
 import com.example.android_architecture.rxEventBus.RxEvent;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -49,6 +50,7 @@ public class MainPresenter implements MainContract.Presenter {
                     view.setItems((ArrayList<User>)userResponse.userList);
                 }, error -> {
                     view.showToast(error.getMessage());
+                    Log.e("MyTag", error.getMessage());
                 })
         );
     }

@@ -15,7 +15,7 @@ buildscript {
         glideVersion = '3.7.0'
 
         // butterKnife
-        butterKnifeVersion = '8.8.1'
+        butterKnifeVersion = '10.0.0'
 
         // rxAndroid
         rxAndroidVersion = '2.0.2'
